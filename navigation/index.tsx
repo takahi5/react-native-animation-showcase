@@ -58,7 +58,7 @@ function RootNavigator() {
       <Stack.Screen
         name="ScrollHeader"
         component={ScrollHeaderScreen}
-        options={{ title: "Scroll Header sample" }}
+        options={{ title: "Scroll Header sample", headerShown: false }}
       />
       <Stack.Screen
         name="NotFound"
