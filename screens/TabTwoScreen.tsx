@@ -1,15 +1,28 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import React, { useRef, useState } from "react";
+import { StyleSheet, View, Button, Text } from "react-native";
+import * as Moti from "moti";
 
 export default function TabTwoScreen() {
+  const [messages, setMessages] = useState<string[]>([]);
+
+  const addMessage = () => {
+    setMessages([...messages, `item ${messages.length}`]);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <Button title="Add Item" onPress={addMessage} />
+      {messages.map((message, index) => (
+        <Moti.View
+          from={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: "timing" }}
+          style={styles.item}
+          key={index.toString()}
+        >
+          <Text style={styles.text}>{message}</Text>
+        </Moti.View>
+      ))}
     </View>
   );
 }
@@ -17,16 +30,19 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "flex-start",
+    backgroundColor: "#dfe6e9",
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  item: {
+    width: "90%",
+    height: 50,
+    margin: 10,
+    backgroundColor: "#00b894",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  text: {
+    color: "#fff",
   },
 });
