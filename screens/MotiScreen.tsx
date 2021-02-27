@@ -2,21 +2,26 @@ import React, { useRef, useState } from "react";
 import { StyleSheet, View, Button, Text } from "react-native";
 import * as Moti from "moti";
 
-export default function TabTwoScreen() {
+export const MotiScreen = () => {
   const [messages, setMessages] = useState<string[]>([]);
 
   const addMessage = () => {
     setMessages([...messages, `item ${messages.length}`]);
   };
 
+  const resetMessages = () => {
+    setMessages([]);
+  };
+
   return (
     <View style={styles.container}>
       <Button title="Add Item" onPress={addMessage} />
+      <Button title="Reset" onPress={resetMessages} />
       {messages.map((message, index) => (
         <Moti.View
           from={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: "timing" }}
+          transition={{ type: "timing", duration: 300 }}
           style={styles.item}
           key={index.toString()}
         >
@@ -25,7 +30,7 @@ export default function TabTwoScreen() {
       ))}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

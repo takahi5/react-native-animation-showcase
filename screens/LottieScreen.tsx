@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Button, StyleSheet, View, Image, Text } from "react-native";
 import LottieView from "lottie-react-native";
 
-export default function TabOneScreen() {
+export const LottieScreen = () => {
   const animationRef = useRef<LottieView | null>();
 
   const resetAnimation = () => {
@@ -32,7 +32,7 @@ export default function TabOneScreen() {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   animationContainer: {
