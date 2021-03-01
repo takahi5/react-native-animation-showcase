@@ -1,6 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useRef, useState } from "react";
-import { StyleSheet, View, Button, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View, Button } from "react-native";
 import { RootStackParamList } from "../types";
 
 type Props = {
@@ -16,6 +16,11 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
         title="ScrollHeader"
         onPress={() => navigation.push("ScrollHeader")}
       />
+      <Button
+        title="BottomSheet"
+        onPress={() => navigation.push("BottomSheet")}
+      />
+      <Button title="Gesture" onPress={() => navigation.push("Gesture")} />
     </View>
   );
 };

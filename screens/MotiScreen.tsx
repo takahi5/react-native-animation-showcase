@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Button, Text } from "react-native";
 import * as Moti from "moti";
 
@@ -19,9 +19,9 @@ export const MotiScreen = () => {
       <Button title="Reset" onPress={resetMessages} />
       {messages.map((message, index) => (
         <Moti.View
-          from={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: "timing", duration: 300 }}
+          from={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ type: "timing", duration: 1000 }}
           style={styles.item}
           key={index.toString()}
         >
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "#dfe6e9",
+    backgroundColor: "#fff",
   },
   item: {
     width: "90%",

@@ -15,6 +15,8 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { LottieScreen } from "../screens/LottieScreen";
 import { MotiScreen } from "../screens/MotiScreen";
 import { ScrollHeaderScreen } from "../screens/ScrollHeaderScreen";
+import { GestureScreen } from "../screens/GestureScreen";
+import { BottomSheetScreen } from "../screens/BottomSheetScreen";
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -59,6 +61,16 @@ function RootNavigator() {
         name="ScrollHeader"
         component={ScrollHeaderScreen}
         options={{ title: "Scroll Header sample", headerShown: false }}
+      />
+      <Stack.Screen
+        name="BottomSheet"
+        component={BottomSheetScreen}
+        options={{ title: "Bottom Sheet sample" }}
+      />
+      <Stack.Screen
+        name="Gesture"
+        component={GestureScreen}
+        options={{ title: "Gesture sample" }}
       />
       <Stack.Screen
         name="NotFound"

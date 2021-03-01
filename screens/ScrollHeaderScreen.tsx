@@ -1,14 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   StyleSheet,
   View,
-  Button,
-  Text,
+  TouchableOpacity,
   Image,
   Animated,
   ScrollView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../types";
 
 const MAX_HEADER_HEIGHT = 150;
 const MIN_HEADER_HEIGHT = 80;
@@ -17,7 +19,11 @@ const MAX_AVATAR_SIZE = 100;
 const MIN_AVATAR_SIZE = 70;
 const AVATAR_TOP = MAX_HEADER_HEIGHT - MAX_AVATAR_SIZE / 2;
 
-export const ScrollHeaderScreen = () => {
+type Props = {
+  navigation: StackNavigationProp<RootStackParamList, "ScrollHeader">;
+};
+
+export const ScrollHeaderScreen: React.FC<Props> = ({ navigation }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   return (
@@ -111,6 +117,12 @@ export const ScrollHeaderScreen = () => {
       >
         <BlurView intensity={100} style={{ flex: 1 }}></BlurView>
       </Animated.View>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons name="chevron-back" size={30} color="#fff" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -153,5 +165,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: MIN_HEADER_HEIGHT,
     zIndex: 2,
+  },
+  backButton: {
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "center",
+    left: 10,
+    top: 35,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    zIndex: 3,
   },
 });
